@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#3498db" />
+    <meta name="color-scheme" content="light dark" />
+    <title>绝区零计算公式</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header class="header-bar" id="header">
+        <div class="header-inner">
+            <button class="dark-mode-toggle log-btn" id="open-changelog">📝 更新日志</button>
+            <h1>绝区零计算公式</h1>
+            <button class="dark-mode-toggle theme-btn" id="toggle-mode"><span class="mode-icon">🌙</span><span class="mode-text">深色模式</span></button>
+        </div>
+    </header>
+
+    <div aria-hidden="true" class="overlay" id="changelog-overlay">
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h1>更新日志</h1>
+                <button class="dark-mode-toggle" id="toggle-mode-overlay"><span class="mode-icon">🌙</span><span class="mode-text">深色模式</span></button>
+            </div>
+            <div class="overlay-body">
+                <div class="content">
+                    <h3 style="text-align:center;margin-bottom:20px;color:var(--primary-color);font-size:1.5rem;">
+                        V1.0.0 更新内容
+                    </h3>
+                    <div class="info-box" style="background-color:var(--info-bg);border-radius:8px;padding:10px;">
+                        <ol style="margin:0;padding-left:24px;line-height:2;">
+                            <li>待填写</li>
+                        </ol>
+                    </div>
+                    <p style="text-align:right;margin-top:40px;color:var(--text-color);font-size:0.9rem;font-style:italic;">
+                        --艾莲其实是爱恋的意思
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="cards">
+        <article class="card" id="generic-dmg">
+            <h3>通用伤害</h3>
+            <div class="formula">
+                $$\begin{align}
+                    \text{通用伤害} &= \text{基础属性} \times \text{倍率} \times (1 + \text{失衡易伤}\%)\\
+                    &\quad \times (1 + \text{增伤}\% ) \times (1 + \text{暴击伤害}\%) \\
+                    &\quad \times (1 - \text{增抗}\% + \text{减抗}\% + \text{抗穿}\%)
+                \end{align}$$
+            </div>
+        </article>
+
+        <article class="card" id="defense-zone">
+            <h3>防御区</h3>
+            <div class="formula">
+                $$\text{防御区} = \frac{794}{\frac{\text{1级基础防御}}{50} \times 794 \times (1 + \text{加防}\% - \text{减防}\% - \text{无视防御}\% ) \times (1- \text{穿透}\%) - \text{穿透值} + 794}$$
+            </div>
+        </article>
+
+        <article class="card" id="direct-dmg">
+            <h3>直伤伤害</h3>
+            <div class="formula">
+                $$\begin{align}
+                    \text{直伤伤害} &= \text{通用伤害(攻击力)} \times \text{防御区} \\
+                    &\quad \times (1 + \text{易伤} - \text{减伤}) \\
+                    &\quad \times \text{距离衰减区}
+                \end{align}$$
+            </div>
+        </article>
+
+        <article class="card" id="penetration-dmg">
+            <h3>命破伤害</h3>
+            <div class="formula">
+                $$\begin{align}
+                    \text{贯穿力} &= \frac{\text{生命值}}{10} + \frac{3 \times \text{攻击力}}{10} \\
+                \end{align}$$
+            </div>
+            <div class="formula">
+                $$\begin{align}
+                    \text{命破伤害} &= \text{通用伤害(贯穿力)} \times (1 + \text{易伤} - \text{减伤}) \\
+                    &\quad \times (1 + \text{贯穿增伤}\% - \text{贯穿减伤}\%)
+                \end{align}$$
+            </div>
+        </article>
+
+        <article class="card" id="anomaly-dmg">
+            <h3>异常伤害</h3>
+            <div class="formula">
+                $$\begin{align}
+                    \text{异常伤害} &= \text{通用伤害(攻击力)} \times \frac{\text{异常精通}}{100} \times \text{防御区} \\
+                    &\quad \times \underbrace{\operatorname{trunc}\left(1 + \frac{\text{等级} - 1}{59}, 4\right)}_{\text{保留小数函数}} \\
+                    &\quad \times (1 + \text{异常增伤} + \text{异常易伤}) \\
+                \end{align}$$
+            </div>
+            <div class="formula">
+                $$\begin{align}
+                    \text{倍率} &=
+                    \begin{cases}
+                        &\quad 713\% \times 1 \quad & , \text{强击} \\
+                        &\quad 500\% \times 1 \quad & , \text{碎冰} \\
+                        &\quad 50\% \times 20 \quad & , \text{灼烧(0.5 sCD)} \\
+                        &\quad 125\% \times 10 \quad & , \text{感电(1 hit/1 sCD)} \\
+                        &\quad 62.5\% \times 20 \quad & , \text{侵蚀(1 hit/0.5 sCD)} \\
+                    \end{cases}
+                \end{align}$$
+            </div>
+        </article>
+
+        <article class="card" id="balance-value">
+            <h3>失衡值</h3>
+            <div class="formula">
+                $$\begin{align}
+                    \text{失衡值} &= \text{冲击力} \times \text{失衡倍率} \times (1 - \text{失衡抗性}) \\
+                    &\quad \times (1 + \text{造成的失衡值提升} - \text{造成的失衡值降低}) \\
+                    &\quad \times (1 + \text{受到的失衡值提升} - \text{受到的失衡值降低}) \\
+                    &\quad \times \text{距离衰减区}
+                \end{align}$$
+            </div>
+        </article>
+
+        <article class="card" id="anomaly-stack">
+            <h3>异常积蓄值</h3>
+            <div class="formula">
+                $$\begin{align}
+                    \text{异常积蓄值} &= \text{基础积蓄值} \times \frac{\lfloor \text{异常掌控} \rfloor}{100} \\
+                    &\quad \times (1 + \text{积蓄效率提升} - \text{积蓄效率降低} + \text{积蓄值提升}) \\
+                    &\quad \times (1 - \text{积蓄抗性提升}\% + \text{积蓄抗性减少}\%) \times \text{距离衰减区}
+                \end{align}$$
+            </div>
+            <div class="formula">
+                $$\begin{align}
+                    \text{异常积蓄阈值} &= 
+                    \begin{cases}
+                        a_1 = 600 \times 1.2 \text{(物理)} \\
+                        a_{n+1} = \lfloor 1.05 \times a_n \rfloor, & 1 \leq n \leq 9
+                        \tag{n为触发次数} \\
+                    \end{cases} \\
+                \end{align}$$
+            </div>
+            <div class="formula">
+                $$\begin{align}
+                    \text{普通:精英:首领} &= 600:2250:3000
+                \end{align}$$
+            </div>
+        </article>
+
+        <article class="card" id="chaos">
+            <h3>紊乱</h3>
+            <div class="formula">
+                $$\text{伤害倍率} = 450\% + \begin{cases}
+                    7.5\% \times \lfloor t \rfloor & \text{畏缩}\\
+                    7.5\% \times \lfloor t \rfloor & \text{霜寒}\\
+                    75\% \times \lfloor t + 2 \rfloor & \text{霜寒·烈霜}\\
+                    50\% \times \frac{\lfloor t \rfloor}{0.5} & \text{灼烧}\\
+                    125\% \times \lfloor t \rfloor & \text{感电}\\
+                    62.5\% \times \frac{\lfloor t \rfloor}{0.5} & \text{侵蚀}
+                \end{cases}$$
+            </div>
+            <div class="formula">
+                $$\begin{align}
+                    \text{失衡倍率} = 200 \%
+                \end{align}$$
+            </div>
+        </article>
+
+        <article class="card" id="weighting">
+            <h3>加权规则</h3>
+            <div class="formula">
+                $$\text{积蓄值百分比} = \frac{\text{此刻攻击积蓄值}}{\text{总积蓄值} - \text{邦布累计积蓄值}} \times 100\%$$
+            </div>
+            <div>
+                <p>对于异常伤害、异常积蓄和紊乱失衡积蓄来说，最后结算时会按照此刻攻击的贡献所占对应状态的百分比参与结算</p>
+                <p>异常伤害参与加权的属性有：等级、攻击力、精通区、穿透率、穿透值、增伤区、异常增伤区</p>
+                <p>异常积蓄参与加权的属性有：异常积蓄值</p>
+                <p>紊乱失衡积蓄参与加权的属性有：等级 \((1 + 0.0075 \times lv)\)、冲击力、失衡效率区</p>
+            </div>
+        </article>
+
+        <article class="card" id="distance-decay">
+            <h3>距离衰减区</h3>
+            <div>
+                <p>目前只有部分代理人会受到该乘区影响：默认型、格莉丝型、扳机型、耀嘉音型</p>
+            </div>
+            <div class="formula">
+                $$\text{距离衰减区} =
+                \begin{cases}
+                    25\% + 25\% \times \lfloor \frac{d-15}{5} \rfloor \quad & , d \geq 15\text{m} && \text{比利、丽娜、朱鸢等} \\
+                    30\% \quad & , d \geq 15\text{m} && \text{格莉丝}
+                \end{cases}
+                \tag{d为敌我距离}$$
+            </div>
+        </article>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
