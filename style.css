@@ -67,7 +67,7 @@ h1 {
     text-align: center;
     margin: 0;
     color: var(--heading-color);
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-size: 2.5rem;
 }
 
 .dark-mode-toggle, .ghost-button {
@@ -294,8 +294,6 @@ h1 {
     
     .formula {
         font-size: 0.85em;
-        max-height: 180px;
-    }
         max-height: 180px;
     }
     
