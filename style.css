@@ -29,13 +29,15 @@ body.dark-mode {
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: "Microsoft YaHei", sans-serif;
+    font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
     background: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
     padding: clamp(12px, 2vw, 20px);
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease;
     font-size: clamp(14px, 1.5vw, 16px);
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 body.freeze-scroll { overflow: hidden; }
@@ -45,13 +47,13 @@ body.freeze-scroll { overflow: hidden; }
     top: 0;
     z-index: 120;
     background: var(--bg-color);
-    padding: 18px 20px 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s ease;
-    margin-left: -20px;
-    margin-right: -20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: clamp(10px, 2vw, 18px) clamp(12px, 2vw, 20px);
+    box-shadow: 0 2px 8px var(--shadow);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-left: calc(-1 * clamp(12px, 2vw, 20px));
+    margin-right: calc(-1 * clamp(12px, 2vw, 20px));
+    padding-left: clamp(12px, 2vw, 20px);
+    padding-right: clamp(12px, 2vw, 20px);
 }
 
 .header-inner {
@@ -82,7 +84,11 @@ h1 {
     transition: all 0.3s ease;
 }
 
-.dark-mode-toggle:hover, .ghost-button:hover { background: var(--primary-color); transform: translateY(-1px); }
+.dark-mode-toggle:hover, .ghost-button:hover { 
+    background: var(--primary-color); 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 .overlay {
     position: fixed;
@@ -116,47 +122,80 @@ h1 {
     transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.overlay.active .overlay-content { opacity: 1; transform: scale(1); }
+.overlay.active .overlay-content { 
+    opacity: 1; 
+    transform: scale(1);
+}
 
 .overlay-header {
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
     padding: 16px 20px;
     background: var(--bg-color);
     box-shadow: 0 2px 8px var(--shadow);
-    z-index: 1001;
 }
 
-.overlay-header h2 { text-align: center; margin: 0; color: var(--heading-color); font-size: 2rem; }
+.overlay-header h2 {
+    grid-column: 2;
+    text-align: center;
+    margin: 0;
+    color: var(--heading-color);
+    font-size: 2rem;
+}
 
-.overlay-header h1 { text-align: center; margin: 0; color: var(--heading-color); font-size: 2rem; }
+.overlay-header h1 {
+    grid-column: 2;
+    text-align: center;
+    margin: 0;
+    color: var(--heading-color);
+    font-size: 2rem;
+}
 
-.overlay-header button { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); }
+.overlay-header button { 
+    position: absolute; 
+    right: 18px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+}
 
 .overlay-body { padding: 20px; overflow: auto; }
 
 .controls { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
 
 .cards {
-    width: 90%;
+    width: calc(100% + 2 * clamp(12px, 2vw, 20px));
     margin: 0 auto 40px;
+    margin-left: calc(-1 * clamp(12px, 2vw, 20px));
+    margin-right: calc(-1 * clamp(12px, 2vw, 20px));
+    padding-left: clamp(12px, 2vw, 20px);
+    padding-right: clamp(12px, 2vw, 20px);
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(12px, 2vw, 20px);
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(12px, 1.5vw, 20px);
     align-items: stretch;
 }
 
 .card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: clamp(8px, 1.5vw, 12px);
-    padding: clamp(12px, 2.5vw, 20px);
+    border-radius: clamp(8px, 1vw, 12px);
+    padding: clamp(16px, 2vw, 24px);
     box-shadow: 0 4px 12px var(--shadow);
     transition: background-color 0.3s, border-color 0.3s, transform 0.2s ease;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
-.card:hover { transform: translateY(-2px); background: var(--hover-bg); }
+.card:hover { 
+    transform: translateY(-3px); 
+    background: var(--hover-bg);
+    box-shadow: 0 6px 16px var(--shadow);
+}
 
 .card h3 {
     margin-bottom: 10px;
@@ -169,14 +208,28 @@ h1 {
 }
 
 .formula {
-    margin-top: 6px;
+    margin-top: 10px;
     text-align: center;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex: 1;
-    font-size: clamp(0.85em, 1.2vw, 1em);
+    font-size: clamp(0.8em, 1vw, 1em);
+    padding: clamp(8px, 1vw, 12px);
+    overflow: visible;
+}
+
+/* 公式内容样式 */
+.formula > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* MathJax公式特别处理 */
+.formula mjx-container {
+    margin: 0 !important;
+    display: inline-block !important;
 }
 
 .card > div:not(.formula) {
@@ -189,18 +242,37 @@ h1 {
     flex-direction: column;
 }
 
-.subtitle { font-size: 0.95rem; color: var(--heading-color); margin-bottom: 6px; }
+.subtitle { 
+    font-size: 0.95rem; 
+    color: var(--heading-color); 
+    margin-bottom: 6px;
+    text-align: left;
+    width: 100%;
+}
 
-.footnote { margin-top: auto; font-size: 0.9rem; color: var(--text-color); opacity: 0.85; }
+.footnote { 
+    margin-top: auto; 
+    font-size: 0.9rem; 
+    color: var(--text-color); 
+    opacity: 0.85;
+    text-align: left;
+    width: 100%;
+}
 
 .sticky-shadow { box-shadow: 0 10px 24px var(--shadow); }
 
 @media (max-width: 1200px) {
-    .cards { grid-template-columns: 1fr; width: 95%; gap: 18px; }
+    .cards { 
+        grid-template-columns: 1fr;
+        max-width: 900px;
+        width: calc(100% + 2 * clamp(12px, 2vw, 20px));
+    }
 }
 
 @media (max-width: 1024px) {
-    .cards { width: 96%; gap: 16px; }
+    .card {
+        padding: clamp(14px, 2vw, 20px);
+    }
 }
 
 @media (max-width: 900px) {
@@ -208,17 +280,23 @@ h1 {
     .header-inner h1 { grid-area: title; }
     .header-inner .log-btn { grid-area: log; }
     .header-inner .theme-btn { grid-area: theme; justify-self: end; }
-    .cards { gap: 14px; }
+}
+
+@media (max-width: 800px) {
+    .overlay-content { width: 90%; max-height: 88vh; }
 }
 
 @media (max-width: 768px) {
     /* 手机端标题栏两行布局 */
     .header-bar { 
-        padding: 12px 12px;
-        margin-left: calc(-1 * clamp(12px, 2vw, 20px));
-        margin-right: calc(-1 * clamp(12px, 2vw, 20px));
-        padding-left: 12px;
-        padding-right: 12px;
+        padding: 12px;
+    }
+    
+    .formula {
+        font-size: 0.85em;
+        max-height: 180px;
+    }
+        max-height: 180px;
     }
     
     .header-inner {
@@ -255,16 +333,25 @@ h1 {
     .overlay-body { padding: 16px; }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
     body { line-height: 1.5; }
-    .header-bar { padding: 10px 10px 8px; }
-    .cards { gap: 10px; margin-bottom: 24px; }
-    .card { gap: 4px; }
-    .card h3 { margin-bottom: 4px; }
-    .formula { margin-top: 4px; }
+    .cards { 
+        gap: clamp(10px, 2vw, 14px);
+        margin-bottom: 24px; 
+    }
+    .card { 
+        padding: clamp(14px, 3vw, 18px);
+    }
+    .formula { 
+        font-size: 0.8em;
+    }
+    .overlay-content { width: 95%; max-height: 92vh; }
+}
+
+@media (max-width: 480px) {
+    .header-bar { padding: 10px; }
     .subtitle { font-size: 0.9em; }
     .footnote { font-size: 0.88em; }
-    .overlay-content { width: 95%; }
     .overlay-header { padding: 10px 12px; }
     .overlay-body { padding: 12px; }
 }
