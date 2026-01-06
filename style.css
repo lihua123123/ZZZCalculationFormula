@@ -254,14 +254,13 @@ h1 {
 }
 
 @media (max-width: 480px) {
-    body { font-size: 13px; padding: 12px; }
+    body { font-size: 13px; padding: 12px; line-height: 1.5; }
     h1 { font-size: clamp(1.3rem, 6vw, 1.7rem); }
     .header-bar { padding: 12px 12px 8px; }
     .card { padding: 12px; gap: 4px; }
     .card h3 { font-size: 1.1rem; margin-bottom: 4px; }
-    .dark-mode-toggle, .ghost-button { padding: 6px 10px; font-size: 12px; gap: 4px; }
+    .dark-mode-toggle, .ghost-button { padding: 6px 10px; font-size: 13px; gap: 4px; }
     .formula { margin-top: 4px; font-size: 0.85em; }
-    body { line-height: 1.5; }
     .cards { gap: 8px; }
     .subtitle { font-size: 0.9rem; }
     .footnote { font-size: 0.85rem; }
