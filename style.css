@@ -208,7 +208,7 @@ h1 {
 }
 
 @media (max-width: 768px) {
-    body { font-size: 14px; }
+    body { font-size: 14px; padding: 16px; }
     h1 { font-size: 1.8rem; }
     
     /* 手机端标题栏两行布局 */
@@ -242,10 +242,10 @@ h1 {
         justify-self: end;
     }
     
+    .dark-mode-toggle, .ghost-button { padding: 8px 12px; font-size: 13px; }
     .cards { width: 100%; gap: 14px; margin-bottom: 30px; }
     .card { padding: 14px; }
     .card h3 { font-size: 1.2rem; margin-bottom: 6px; }
-    .dark-mode-toggle, .ghost-button { padding: 8px 12px; font-size: 13px; }
     .formula { margin-top: 6px; font-size: 0.9em; }
     .overlay-content { width: 90%; max-height: 90vh; }
     .overlay-header { padding: 12px 16px; }
