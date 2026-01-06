@@ -10,7 +10,8 @@
     <title>绝区零伤害公式一览表</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <!-- 相对路径，适配 GitHub Pages/静态托管 -->
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -310,7 +311,8 @@
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <!-- 延迟加载业务脚本，避免阻塞渲染 -->
+    <script src="./script.js" defer></script>
 </body>
 
 </html>
