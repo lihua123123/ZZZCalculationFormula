@@ -199,7 +199,8 @@ table {
     border-collapse: collapse;
     margin: 15px 0;
     font-size: 17px;
-    display: block;
+    display: table;
+    table-layout: auto;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
@@ -210,7 +211,6 @@ td {
     padding: 12px;
     text-align: center;
     white-space: nowrap;
-    min-width: 80px;
 }
 
 th {
