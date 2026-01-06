@@ -54,10 +54,3 @@ window.addEventListener('scroll', () => {
     }
 })();
 
-// MathJax 配置
-MathJax = {
-    tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
-    }
-};

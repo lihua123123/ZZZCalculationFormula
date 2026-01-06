@@ -8,8 +8,20 @@
     <meta name="theme-color" content="#3498db" />
     <meta name="color-scheme" content="light dark" />
     <title>绝区零伤害公式一览表</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Polyfill for older browsers (defer for non-blocking) -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015" defer></script>
+
+    <!-- MathJax config must load before MathJax script -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="mathjax" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+
     <!-- 相对路径，适配 GitHub Pages/静态托管 -->
     <link rel="stylesheet" href="./style.css">
 </head>
