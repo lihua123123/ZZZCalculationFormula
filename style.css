@@ -98,6 +98,37 @@ h1 {
     transform: translateY(-2px);
 }
 
+/* 异常状态颜色 */
+.qiangjie, .weisuo {
+    color: #F0D12B;
+    font-weight: 600;
+}
+
+.suibing, .shuanghan {
+    color: #98EFF0;
+    font-weight: 600;
+}
+
+.lieshuang {
+    color: #98EFF0;
+    font-weight: 600;
+}
+
+.zhuoshao {
+    color: #FF5521;
+    font-weight: 600;
+}
+
+.gandian {
+    color: #2EB6FF;
+    font-weight: 600;
+}
+
+.qinshi {
+    color: #FE437E;
+    font-weight: 600;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;

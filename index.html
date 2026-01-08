@@ -143,7 +143,7 @@
         <div class="formula-section">
             <h2>异常伤害</h2>
             <p class="description">
-                异常伤害包括强击、碎冰、灼烧、感电、侵蚀等异常状态造成的伤害。
+                异常伤害包括<span class="qiangjie">强击</span>、<span class="suibing">碎冰</span>、<span class="zhuoshao">灼烧</span>、<span class="gandian">感电</span>、<span class="qinshi">侵蚀</span>等异常状态造成的伤害。
             </p>
             <div class="formula-box">
                 <div class="math">
@@ -160,19 +160,19 @@
                     <th>异常类型</th><th>倍率</th><th>次数</th><th>频率</th>
                 </tr>
                 <tr>
-                    <td>强击</td><td>713%</td><td>1</td><td></td>
+                    <td><span class="qiangjie">强击</span></td><td>713%</td><td>1</td><td></td>
                 </tr>
                 <tr>
-                    <td>碎冰</td><td>500%</td><td>1</td><td></td>
+                    <td><span class="suibing">碎冰</span></td><td>500%</td><td>1</td><td></td>
                 </tr>
                 <tr>
-                    <td>灼烧</td><td>50%</td><td>20</td><td>0.5 sCD</td>
+                    <td><span class="zhuoshao">灼烧</span></td><td>50%</td><td>20</td><td>0.5 sCD</td>
                 </tr>
                 <tr>
-                    <td>感电</td><td>125%</td><td>10</td><td>1 hit/1 sCD</td>
+                    <td><span class="gandian">感电</span></td><td>125%</td><td>10</td><td>1 hit/1 sCD</td>
                 </tr>
                 <tr>
-                    <td>侵蚀</td><td>62.5%</td><td>20</td><td>1 hit/0.5 sCD</td>
+                    <td><span class="qinshi">侵蚀</span></td><td>62.5%</td><td>20</td><td>1 hit/0.5 sCD</td>
                 </tr>
             </table>
         </div>
@@ -247,12 +247,12 @@
                     \\
                     \quad & \text{伤害倍率} = 450 \% +
                     \begin{cases}
-                        \quad &7.5 \% \times \lfloor t \rfloor \quad & , \text{畏缩} \\
-                        \quad &7.5 \% \times \lfloor t \rfloor \quad & , \text{霜寒} \\
-                        \quad &75 \% \times \lfloor t + 2 \rfloor \quad & , \text{霜寒·烈霜} \\
-                        \quad &50 \% \times \frac{\lfloor t \rfloor}{0.5} \quad & , \text{灼烧} \\
-                        \quad &125 \% \times \lfloor t \rfloor \quad & , \text{感电} \\
-                        \quad &62.5 \% \times \frac{\lfloor t \rfloor}{0.5} \quad & , \text{侵蚀} \\
+                        \quad &7.5 \% \times \lfloor t \rfloor \quad & , \color{#F0D12B}{\text{畏缩}} \\
+                        \quad &7.5 \% \times \lfloor t \rfloor \quad & , \color{#98EFF0}{\text{霜寒}} \\
+                        \quad &75 \% \times \lfloor t + 2 \rfloor \quad & , \color{#98EFF0}{\text{霜寒·烈霜}} \\
+                        \quad &50 \% \times \frac{\lfloor t \rfloor}{0.5} \quad & , \color{#FF5521}{\text{灼烧}} \\
+                        \quad &125 \% \times \lfloor t \rfloor \quad & , \color{#2EB6FF}{\text{感电}} \\
+                        \quad &62.5 \% \times \frac{\lfloor t \rfloor}{0.5} \quad & , \color{#FE437E}{\text{侵蚀}} \\
                         \tag{t为剩余时间}
                     \end{cases}\\
                     \\
