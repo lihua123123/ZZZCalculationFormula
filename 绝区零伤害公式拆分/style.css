@@ -1,0 +1,417 @@
+:root {
+    --bg-color: #f5f7fa;
+    --text-color: #333;
+    --card-bg: white;
+    --border-color: #e1e8ed;
+    --hover-bg: #f1f7ff;
+    --shadow: rgba(0, 0, 0, 0.05);
+    --heading-color: #2c3e50;
+    --primary-color: #3498db;
+    --secondary-color: #e74c3c;
+    --table-stripe: #f9f9f9;
+    --button-bg: #2c3e50;
+    --info-bg: #f8f9fa;
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --card-bg: #2d2d2d;
+    --border-color: #404040;
+    --hover-bg: #3a3a3a;
+    --shadow: rgba(0, 0, 0, 0.3);
+    --heading-color: #e0e0e0;
+    --primary-color: #4dabf7;
+    --secondary-color: #ff6b6b;
+    --table-stripe: #252525;
+    --button-bg: #404040;
+    --info-bg: #2a2a2a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+body {
+    font-family: "Microsoft YaHei", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    scrollbar-gutter: always;
+}
+
+.header-bar {
+    position: sticky;
+    top: 0;
+    z-index: 120;
+    background: var(--bg-color);
+    padding: 20px 20px 12px;
+    box-shadow: none;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    margin-bottom: 12px;
+}
+
+.header-bar.scrolled {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.header-inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+    color: var(--heading-color);
+    font-size: 2.5rem;
+}
+
+.dark-mode-toggle {
+    padding: 10px 20px;
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 19px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dark-mode-toggle:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* 异常状态颜色 */
+.qiangjie, .weisuo {
+    color: #F0D12B;
+    font-weight: 600;
+}
+
+.suibing, .shuanghan {
+    color: #98EFF0;
+    font-weight: 600;
+}
+
+.lieshuang {
+    color: #98EFF0;
+    font-weight: 600;
+}
+
+.zhuoshao {
+    color: #FF5521;
+    font-weight: 600;
+}
+
+.gandian {
+    color: #2EB6FF;
+    font-weight: 600;
+}
+
+.qinshi {
+    color: #FE437E;
+    font-weight: 600;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.formula-section {
+    flex: 1;
+    min-width: calc(50% - 15px);
+    max-width: calc(50% - 15px);
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.formula-section:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .formula-section:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.formula-section h2 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.3s ease;
+}
+
+.formula-section:hover h2 {
+    border-bottom-color: var(--primary-color);
+}
+
+.formula-section h3 {
+    color: var(--heading-color);
+    font-size: 1.2rem;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.formula-box {
+    background: var(--info-bg);
+    border-left: 4px solid transparent;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+    overflow-x: auto;
+    transition: border-left-color 0.3s ease;
+}
+
+.formula-section:hover .formula-box {
+    border-left-color: var(--primary-color);
+}
+
+.formula-box p {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.description {
+    color: var(--text-color);
+    font-size: 17px;
+    line-height: 1.8;
+    margin: 10px 0;
+}
+
+.math {
+    display: block;
+    margin: 15px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    font-size: 120%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-gutter: always;
+}
+
+.math::-webkit-scrollbar:horizontal {
+    height: 8px;
+}
+
+.math::-webkit-scrollbar-thumb:horizontal {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+}
+
+body.dark-mode .math::-webkit-scrollbar-thumb:horizontal {
+    background-color: #888;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 17px;
+    display: table;
+    table-layout: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+th,
+td {
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: var(--table-stripe);
+}
+
+tr:hover {
+    background-color: var(--hover-bg);
+}
+
+/* 表格滚动条样式 */
+table::-webkit-scrollbar {
+    height: 8px;
+}
+
+table::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+}
+
+body.dark-mode table::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+.note {
+    background: rgba(230, 126, 34, 0.1);
+    border-left: 4px solid transparent;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-size: 17px;
+    transition: border-left-color 0.3s ease;
+}
+
+.formula-section:hover .note {
+    border-left-color: #e67e22;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    /* 手机端按钮文字隐藏，只显示图标 */
+    .dark-mode-toggle .mode-text,
+    .dark-mode-toggle .changelog-text {
+        display: none;
+    }
+
+    .dark-mode-toggle {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .header-inner {
+        grid-template-columns: auto 1fr auto;
+        gap: 8px;
+    }
+
+    .formula-section {
+        padding: 15px;
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        padding: 8px 4px;
+    }
+}
+
+.mjx-chtml {
+    display: inline-block !important;
+    font-size: 120% !important;
+}
+
+/* 更新日志弹窗样式 */
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.25s ease;
+}
+
+.overlay-content {
+    width: 85%;
+    max-height: 85vh;
+    background: var(--card-bg);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.overlay.active .overlay-content {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.overlay-header {
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 16px 20px;
+    background: var(--bg-color);
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.overlay-header h2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    text-align: center;
+    color: var(--heading-color);
+    font-size: 1.8rem;
+}
+
+.overlay-body {
+    padding: 20px;
+    overflow: auto;
+    flex: 1;
+}
+
+body.overlay-open {
+    overflow: hidden;
+}
+
+.info-box {
+    background: var(--info-bg);
+    border-left: 4px solid transparent;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+    transition: border-left-color 0.3s ease;
+}
+
+.overlay-content:hover .info-box {
+    border-left-color: var(--primary-color);
+}
