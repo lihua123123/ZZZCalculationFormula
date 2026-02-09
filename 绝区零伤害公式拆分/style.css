@@ -148,6 +148,11 @@ h1 {
     transition: all 0.3s ease;
 }
 
+.formula-section.full-width {
+    min-width: 100%;
+    max-width: 100%;
+}
+
 .formula-section:hover {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
@@ -227,21 +232,35 @@ body.dark-mode .math::-webkit-scrollbar-thumb:horizontal {
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     margin: 15px 0;
     font-size: 17px;
     display: table;
     table-layout: auto;
-    overflow-x: auto;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
     -webkit-overflow-scrolling: touch;
 }
 
 th,
 td {
-    border: 1px solid var(--border-color);
+    border: none;
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     padding: 12px;
     text-align: center;
     white-space: nowrap;
+}
+
+th:last-child,
+td:last-child {
+    border-right: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
 }
 
 th {
@@ -414,4 +433,50 @@ body.overlay-open {
 
 .overlay-content:hover .info-box {
     border-left-color: var(--primary-color);
+}
+/* 查看按钮样式 */
+.view-btn {
+    background: linear-gradient(135deg, var(--primary-color), #2980b9);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    font-weight: 500;
+}
+
+.view-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(135deg, #2980b9, #1e5a8e);
+}
+
+.view-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+
+/* 弹窗关闭按钮 */
+.close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin-left: auto;
+}
+
+.close-btn:hover {
+    background: var(--hover-bg);
+    border-radius: 4px;
 }
