@@ -110,7 +110,7 @@
 
 ---
 
-**数据版本**：绝区零 1.4  
+**数据版本**：绝区零 2.6  
 **最后更新**：2026年2月
 
 欢迎去 [GitHub](https://github.com/lihua123123/ZZZCalculationFormula/issues) 提 Issues！
