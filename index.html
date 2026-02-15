@@ -37,10 +37,16 @@
                 <span class="changelog-text">更新日志</span>
             </button>
             <h1>绝区零伤害公式一览表</h1>
-            <button class="dark-mode-toggle" onclick="toggleDarkMode()">
-                <span class="mode-icon">🌙</span>
-                <span class="mode-text">深色模式</span>
-            </button>
+            <div style="display: flex; gap: 8px;">
+                <button class="dark-mode-toggle" id="open-grad-calc">
+                    <span>🎯</span>
+                    <span class="changelog-text">毕业计算器</span>
+                </button>
+                <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+                    <span class="mode-icon">🌙</span>
+                    <span class="mode-text">深色模式</span>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -56,6 +62,19 @@
             </div>
             <div class="overlay-body">
                 <h3 style="text-align:center;margin-bottom:20px;color:var(--primary-color);font-size:1.5rem;">
+                    V2.6.1 更新内容
+                </h3>
+                <div class="info-box">
+                    <ol style="margin:0;padding-left:24px;line-height:2;">
+                        <li>新增毕业计算器功能（弹窗式）</li>
+                        <li>支持自动计算最优驱动盘组合与副词条分配</li>
+                        <li>支持导出所有可能的组合方案</li>
+                        <li>优化了弹窗样式，统一设计语言</li>
+                        <li>适配深色/浅色模式</li>
+                    </ol>
+                </div>
+
+                <h3 style="text-align:center;margin-bottom:20px;margin-top:40px;color:var(--primary-color);font-size:1.5rem;">
                     V2.6.0 更新内容
                 </h3>
                 <div class="info-box">
@@ -63,6 +82,7 @@
                         <li>修复部分已知问题</li>
                         <li>将大型表格收纳节约空间</li>
                         <li>优化了一点UI</li>
+                        <li>添加了异放倍率</li>
                         <li>欢迎去 <a href="https://github.com/lihua123123/ZZZCalculationFormula/issues" target="_blank" rel="noopener noreferrer" style="color:var(--primary-color);text-decoration:underline;">GitHub 提 Issues</a></li>
                     </ol>
                 </div>
@@ -82,6 +102,78 @@
                 <p style="text-align:right;margin-top:40px;color:var(--text-color);font-size:0.9rem;font-style:italic;">
                     --艾莲其实是爱恋的意思
                 </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 异放倍率弹窗 -->
+    <div aria-hidden="true" class="overlay" id="yifang-overlay">
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h2>异放倍率</h2>
+                <button class="close-btn" id="close-yifang-btn">✕</button>
+            </div>
+            <div class="overlay-body">
+                <p class="description">
+                    异放倍率 = 异常倍率 × 代理人技能描述比例
+                </p>
+                <table class="character-table">
+                    <tr>
+                        <th>属性</th><th>柏妮思</th><th>薇薇安</th><th>爱芮</th>
+                    </tr>
+                    <tr>
+                        <td><span class="qinshi">以太</span></td>
+                        <td>300%</td><td>3.84375%/10精通</td><td>18.125%/10初始掌控</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gandian">电</span></td>
+                        <td>300%</td><td>4%/10精通</td><td>18.875%/10初始掌控</td>
+                    </tr>
+                    <tr>
+                        <td><span class="zhuoshao">火</span></td>
+                        <td>300%</td><td>4%/10精通</td><td>18.8%/10初始掌控</td>
+                    </tr>
+                    <tr>
+                        <td><span class="qiangjie">物理</span></td>
+                        <td>285.2%</td><td>5.3475%/10精通</td><td>19.251%/10初始掌控</td>
+                    </tr>
+                    <tr>
+                        <td><span class="suibing">冰</span></td>
+                        <td>300%</td><td>5.4%/10精通</td><td>19%/10初始掌控</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 异常倍率表弹窗 -->
+    <div aria-hidden="true" class="overlay" id="abnormal-overlay">
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h2>异常倍率表</h2>
+                <button class="close-btn" id="close-abnormal-btn">✕</button>
+            </div>
+            <div class="overlay-body">
+                <table>
+                    <tr>
+                        <th>异常类型</th><th>倍率</th><th>次数</th><th>频率</th>
+                    </tr>
+                    <tr>
+                        <td><span class="qiangjie">强击</span></td><td>713%</td><td>1</td><td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="suibing">碎冰</span></td><td>500%</td><td>1</td><td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="zhuoshao">灼烧</span></td><td>50%</td><td>20</td><td>0.5 s/次</td>
+                    </tr>
+                    <tr>
+                        <td><span class="gandian">感电</span></td><td>125%</td><td>10</td><td>1 sCD</td>
+                    </tr>
+                    <tr>
+                        <td><span class="qinshi">侵蚀</span></td><td>62.5%</td><td>20</td><td>0.5 sCD</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -124,6 +216,173 @@
                         <td>3600</td><td>3672</td><td>3745</td><td>3819</td><td>3895</td><td>3972</td><td>4051</td><td>4132</td><td>4214</td><td>4298</td>
                     </tr>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 毕业计算器弹窗 -->
+    <div aria-hidden="true" class="overlay" id="grad-calc-overlay">
+        <div class="overlay-content" style="width: 95%; max-width: 1400px;">
+            <div class="overlay-header">
+                <h2>毕业计算器</h2>
+                <button class="close-btn" id="close-grad-calc-btn">✕</button>
+            </div>
+            <div class="overlay-body">
+                <p style="color: var(--text-color); margin-bottom: 16px;">输入基础属性与目标值，自动寻找最优驱动盘组合与副词条分配。</p>
+                
+                <div class="grad-calc-body">
+                    <div class="grad-calc-section">
+                        <h3>1. 代理人属性</h3>
+                        <div class="grad-row">
+                            <div>
+                                <label class="grad-label" for="agent-name">代理人名称</label>
+                                <input class="grad-input" id="agent-name" type="text" placeholder="请输入名称" />
+                            </div>
+                            <div>
+                                <label class="grad-label" for="weapon-tier">攻击力武器档位</label>
+                                <select class="grad-select" id="weapon-tier">
+                                    <option value="0">不加成</option>
+                                    <option value="713">713</option>
+                                    <option value="684">684</option>
+                                    <option value="624">624</option>
+                                    <option value="594">594</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grad-checkbox-row">
+                            <label><input type="checkbox" id="choose-hp" checked />生命值</label>
+                            <label><input type="checkbox" id="choose-atk" checked />攻击力</label>
+                            <label><input type="checkbox" id="choose-crit" checked />暴击率</label>
+                        </div>
+
+                        <div id="hp-block" class="grad-attr-block">
+                            <strong>生命值</strong>
+                            <div class="grad-row">
+                                <div>
+                                    <label class="grad-label">基础生命值</label>
+                                    <input class="grad-input" id="hp-base" type="number" min="0" value="10000" />
+                                </div>
+                                <div>
+                                    <label class="grad-label">目标生命值</label>
+                                    <input class="grad-input" id="hp-target" type="number" min="0" value="15000" />
+                                </div>
+                                <div>
+                                    <label class="grad-label">被动提升(%)</label>
+                                    <input class="grad-input" id="hp-passive" type="number" min="0" value="0" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="atk-block" class="grad-attr-block">
+                            <strong>攻击力</strong>
+                            <div class="grad-row">
+                                <div>
+                                    <label class="grad-label">基础攻击力</label>
+                                    <input class="grad-input" id="atk-base" type="number" min="0" value="800" />
+                                </div>
+                                <div>
+                                    <label class="grad-label">目标攻击力</label>
+                                    <input class="grad-input" id="atk-target" type="number" min="0" value="1200" />
+                                </div>
+                                <div>
+                                    <label class="grad-label">被动提升(%)</label>
+                                    <input class="grad-input" id="atk-passive" type="number" min="0" value="0" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="crit-block" class="grad-attr-block">
+                            <strong>暴击率</strong>
+                            <div class="grad-row">
+                                <div>
+                                    <label class="grad-label">基础暴击率(%)</label>
+                                    <input class="grad-input" id="crit-base" type="number" min="0" value="5" />
+                                </div>
+                                <div>
+                                    <label class="grad-label">目标暴击率(%)</label>
+                                    <input class="grad-input" id="crit-target" type="number" min="0" value="20" />
+                                </div>
+                                <div>
+                                    <label class="grad-label">被动提升(%)</label>
+                                    <input class="grad-input" id="crit-passive" type="number" min="0" value="0" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grad-calc-section">
+                        <h3>2. 驱动盘主词条与套装</h3>
+                        <div class="grad-row">
+                            <div>
+                                <label class="grad-label">4号盘主属性</label>
+                                <select class="grad-select" id="slot4-main">
+                                    <option value="auto">自动</option>
+                                    <option value="hpPercent">30%生命值</option>
+                                    <option value="atkPercent">30%攻击力</option>
+                                    <option value="crit">24%暴击率</option>
+                                    <option value="other">其他</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="grad-label">5号盘主属性</label>
+                                <select class="grad-select" id="slot5-main">
+                                    <option value="auto">自动</option>
+                                    <option value="hpPercent">30%生命值</option>
+                                    <option value="atkPercent">30%攻击力</option>
+                                    <option value="other">其他</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="grad-label">6号盘主属性</label>
+                                <select class="grad-select" id="slot6-main">
+                                    <option value="auto">自动</option>
+                                    <option value="hpPercent">30%生命值</option>
+                                    <option value="atkPercent">30%攻击力</option>
+                                    <option value="other">其他</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grad-row">
+                            <div>
+                                <label class="grad-label">套装效果 1</label>
+                                <select class="grad-select" id="set-1">
+                                    <option value="auto">自动</option>
+                                    <option value="hp10">10%生命值</option>
+                                    <option value="atk10">10%攻击力</option>
+                                    <option value="crit8">8%暴击率</option>
+                                    <option value="other">其他</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="grad-label">套装效果 2</label>
+                                <select class="grad-select" id="set-2">
+                                    <option value="auto">自动</option>
+                                    <option value="hp10">10%生命值</option>
+                                    <option value="atk10">10%攻击力</option>
+                                    <option value="crit8">8%暴击率</option>
+                                    <option value="other">其他</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p class="grad-hint">若选择"自动"，系统会遍历主词条与套装效果，寻找概率总和最高的组合。</p>
+
+                        <h3 style="margin-top: 20px;">3. 计算</h3>
+                        <div class="grad-actions">
+                            <button class="grad-btn" id="auto-calc">自动毕业计算</button>
+                            <button class="grad-btn" id="manual-calc">使用当前选择重新计算</button>
+                        </div>
+                        <p class="grad-hint">当驱动盘组合无法满足目标时，将显示"当前配装无法毕业"。</p>
+                    </div>
+                </div>
+
+                <div class="grad-calc-section" style="margin: 20px 24px;">
+                    <h3>4. 结果</h3>
+                    <button class="grad-btn" id="export-btn" style="margin-bottom: 12px; width: auto; padding: 8px 14px; font-size: 0.9rem; display: none;">导出所有组合</button>
+                    <div id="result" class="grad-result-summary">等待计算...</div>
+                    <div id="disk-results" class="grad-disk-grid"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -231,27 +490,10 @@
                     \end{align}$$
                 </div>
             </div>
-            <h3>异常倍率表</h3>
-            <table>
-                <tr>
-                    <th>异常类型</th><th>倍率</th><th>次数</th><th>频率</th>
-                </tr>
-                <tr>
-                    <td><span class="qiangjie">强击</span></td><td>713%</td><td>1</td><td></td>
-                </tr>
-                <tr>
-                    <td><span class="suibing">碎冰</span></td><td>500%</td><td>1</td><td></td>
-                </tr>
-                <tr>
-                    <td><span class="zhuoshao">灼烧</span></td><td>50%</td><td>20</td><td>0.5 s/次</td>
-                </tr>
-                <tr>
-                    <td><span class="gandian">感电</span></td><td>125%</td><td>10</td><td>1 sCD</td>
-                </tr>
-                <tr>
-                    <td><span class="qinshi">侵蚀</span></td><td>62.5%</td><td>20</td><td>0.5 sCD</td>
-                </tr>
-            </table>
+            <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; justify-content: center;">
+                <button class="view-btn" id="open-abnormal-btn">查看异常倍率表</button>
+                <button class="view-btn" id="open-yifang-btn">查看异放倍率表</button>
+            </div>
         </div>
 
         <!-- 异常积蓄值 -->
@@ -279,7 +521,7 @@
                 </div>
             </div>
             <div style="text-align: center; margin: 30px 0;">
-                <button class="view-btn" id="open-threshold-btn">📋 查看异常积蓄阈值表</button>
+                <button class="view-btn" id="open-threshold-btn">查看异常积蓄阈值表</button>
             </div>
             <div class="note">
                 <strong>注意：</strong>大部分代理人计算<strong>距离衰减区</strong>时，默认为100%。

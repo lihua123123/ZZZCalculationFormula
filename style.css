@@ -90,6 +90,7 @@ h1 {
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
 }
 
@@ -237,7 +238,7 @@ table {
     margin: 15px 0;
     font-size: 17px;
     display: table;
-    table-layout: auto;
+    table-layout: fixed;
     overflow: hidden;
     border-radius: 8px;
     border: 1px solid var(--border-color);
@@ -267,10 +268,16 @@ th {
     background-color: var(--primary-color);
     color: white;
     font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 tr:nth-child(even) {
     background-color: var(--table-stripe);
+}
+
+/* 角色弹窗表头文字阴影 */
+.character-table th {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 tr:hover {
@@ -479,4 +486,176 @@ body.overlay-open {
 .close-btn:hover {
     background: var(--hover-bg);
     border-radius: 4px;
+}
+
+/* 毕业计算器专用样式 */
+.grad-calc-body {
+    padding: 16px 24px 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.grad-calc-section {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 12px 30px var(--shadow);
+}
+
+.grad-calc-section h3 {
+    margin: 0 0 12px;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.grad-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.grad-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-bottom: 4px;
+}
+
+.grad-input, .grad-select {
+    width: 100%;
+    padding: 9px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+.grad-checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.grad-checkbox-row input[type="checkbox"] {
+    width: auto;
+    margin-right: 6px;
+}
+
+.grad-attr-block {
+    border: 1px dashed var(--border-color);
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    background: var(--info-bg);
+}
+
+.grad-attr-block.hidden {
+    display: none;
+}
+
+.grad-btn {
+    width: 100%;
+    padding: 9px 10px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.grad-btn:hover {
+    background: #2980b9;
+    transform: translateY(-1px);
+}
+
+.grad-result-box {
+    background: var(--info-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px;
+    min-height: 120px;
+    white-space: pre-wrap;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.grad-result-summary {
+    background: var(--info-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.grad-disk-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+@media (max-width: 1024px) {
+    .grad-disk-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .grad-disk-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.grad-disk-card {
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 12px;
+    background: var(--card-bg);
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
+.grad-disk-card h4 {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+    color: var(--primary-color);
+}
+
+.grad-sub-line {
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: var(--info-bg);
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+
+.grad-sub-line:last-child {
+    margin-bottom: 0;
+}
+
+.grad-disk-meta {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: var(--text-color);
+}
+
+.grad-hint {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    margin-top: 6px;
+}
+
+.grad-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
